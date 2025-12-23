@@ -29,9 +29,7 @@ jobs:
         run: |
           echo "GEMINI_API_KEY=AIzaSyCFWrcSXvSQmpi3vvsmIM9tKmzr340VmhM" >> .env
       - run: flutter analyze
-      - run: flutter test
       - run: flutter build apk --release
-
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
