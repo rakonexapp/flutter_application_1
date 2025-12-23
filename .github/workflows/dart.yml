@@ -2,14 +2,15 @@ name: Flutter Release APK
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v4
 
       - name: Setup Java
         uses: actions/setup-java@v4
@@ -23,29 +24,35 @@ jobs:
           channel: stable
           cache: true
 
-      - name: Install dependencies
+      - name: Install Flutter dependencies
         run: flutter pub get
 
       - name: Create .env file
         run: |
-          echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" >> .env
+          echo "GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}" > .env
 
-      - name: Analyze
+      - name: Analyze (non-blocking)
         run: flutter analyze || true
 
       - name: Build release APK
         run: flutter build apk --release
 
+      # ---------------- FASTLANE SETUP ----------------
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
       - name: Install Fastlane
         run: |
           cd android
-          gem install bundler
           bundle install
 
-      - name: Upload APK via Fastlane
+      - name: Upload APK via Fastlane (Firebase App Distribution)
         run: |
           cd android
           bundle exec fastlane firebase
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-          FIREBASE_APP_ID: ${{ secrets.FIREBASE_APP_ID }}
