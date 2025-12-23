@@ -13,10 +13,8 @@ void main() async {
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
-  // Initialize Gemini configuration
   await GeminiConfig.initialize();
 
-  // Initialize dependency injection
   await InjectionContainer.init();
 
   runApp(const MyApp());
