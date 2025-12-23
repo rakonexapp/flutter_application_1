@@ -83,14 +83,14 @@ class AppTheme {
         backgroundColor: lightColorScheme.surface,
         surfaceTintColor: lightColorScheme.surfaceTint,
         indicatorColor: lightColorScheme.secondaryContainer,
-        iconTheme: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return IconThemeData(color: lightColorScheme.onSecondaryContainer);
           }
           return IconThemeData(color: lightColorScheme.onSurfaceVariant);
         }),
-        labelTextStyle: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return GoogleFonts.roboto(
               fontSize: 12,
               fontWeight: FontWeight.w500,
@@ -107,7 +107,7 @@ class AppTheme {
 
       // Chip Theme
       chipTheme: ChipThemeData(
-        backgroundColor: lightColorScheme.surfaceVariant,
+        backgroundColor: lightColorScheme.surface,
         deleteIconColor: lightColorScheme.onSurfaceVariant,
         selectedColor: lightColorScheme.secondaryContainer,
         secondarySelectedColor: lightColorScheme.secondaryContainer,
@@ -190,14 +190,14 @@ class AppTheme {
         backgroundColor: darkColorScheme.surface,
         surfaceTintColor: darkColorScheme.surfaceTint,
         indicatorColor: darkColorScheme.secondaryContainer,
-        iconTheme: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        iconTheme: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return IconThemeData(color: darkColorScheme.onSecondaryContainer);
           }
           return IconThemeData(color: darkColorScheme.onSurfaceVariant);
         }),
-        labelTextStyle: MaterialStateProperty.resolveWith((states) {
-          if (states.contains(MaterialState.selected)) {
+        labelTextStyle: WidgetStateProperty.resolveWith((states) {
+          if (states.contains(WidgetState.selected)) {
             return GoogleFonts.roboto(
               fontSize: 12,
               fontWeight: FontWeight.w500,
@@ -214,7 +214,7 @@ class AppTheme {
 
       // Chip Theme
       chipTheme: ChipThemeData(
-        backgroundColor: darkColorScheme.surfaceVariant,
+        backgroundColor: darkColorScheme.surface,
         deleteIconColor: darkColorScheme.onSurfaceVariant,
         selectedColor: darkColorScheme.secondaryContainer,
         secondarySelectedColor: darkColorScheme.secondaryContainer,

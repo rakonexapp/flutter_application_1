@@ -16,7 +16,7 @@ class EmptyNotesWidget extends StatelessWidget {
           Icon(
                 Icons.lightbulb_outline,
                 size: 120,
-                color: colorScheme.primary.withOpacity(0.3),
+                color: colorScheme.primary.withValues(alpha: 0.3),
               )
               .animate()
               .fadeIn(duration: 600.ms)
@@ -28,7 +28,7 @@ class EmptyNotesWidget extends StatelessWidget {
               .then(delay: 200.ms)
               .shimmer(
                 duration: 2000.ms,
-                color: colorScheme.primary.withOpacity(0.2),
+                color: colorScheme.primary.withValues(alpha: 0.2),
               ),
           const SizedBox(height: 24),
           Text(

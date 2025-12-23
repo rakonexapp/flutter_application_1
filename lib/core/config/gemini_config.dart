@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:google_generative_ai/google_generative_ai.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 
@@ -41,7 +42,7 @@ class GeminiConfig {
     try {
       await dotenv.load(fileName: '.env');
     } catch (e) {
-      print('Warning: Could not load .env file: $e');
+      debugPrint('Warning: Could not load .env file: $e');
     }
   }
 }

@@ -29,7 +29,7 @@ class NoteCard extends StatelessWidget {
     final isLight = _isLightColor(backgroundColor);
 
     // Use dark text on light backgrounds, light text on dark backgrounds
-    return isLight ? Colors.black87 : Colors.white.withOpacity(0.95);
+    return isLight ? Colors.black87 : Colors.white.withValues(alpha: 0.95);
   }
 
   /// Gets the appropriate secondary text color
@@ -37,7 +37,7 @@ class NoteCard extends StatelessWidget {
     final backgroundColor = Color(note.color);
     final isLight = _isLightColor(backgroundColor);
 
-    return isLight ? Colors.black54 : Colors.white.withOpacity(0.7);
+    return isLight ? Colors.black54 : Colors.white.withValues(alpha: 0.7);
   }
 
   /// Gets the appropriate icon color
@@ -45,7 +45,7 @@ class NoteCard extends StatelessWidget {
     final backgroundColor = Color(note.color);
     final isLight = _isLightColor(backgroundColor);
 
-    return isLight ? Colors.black45 : Colors.white.withOpacity(0.6);
+    return isLight ? Colors.black45 : Colors.white.withValues(alpha: 0.6);
   }
 
   @override
@@ -97,7 +97,7 @@ class NoteCard extends StatelessWidget {
               Text(
                 note.content,
                 style: textTheme.bodyMedium?.copyWith(
-                  color: textColor.withOpacity(0.9),
+                  color: textColor.withValues(alpha: 0.9),
                   height: 1.5,
                 ),
                 maxLines: note.title.isEmpty ? 10 : 7,
@@ -117,7 +117,7 @@ class NoteCard extends StatelessWidget {
                         vertical: 4,
                       ),
                       decoration: BoxDecoration(
-                        color: Colors.black.withOpacity(0.1),
+                        color: Colors.black.withValues(alpha: 0.1),
                         borderRadius: BorderRadius.circular(4),
                       ),
                       child: Text(

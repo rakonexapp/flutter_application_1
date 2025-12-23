@@ -45,7 +45,7 @@ class AIAssistantSheet extends StatelessWidget {
                       height: 4,
                       margin: const EdgeInsets.only(bottom: 16),
                       decoration: BoxDecoration(
-                        color: colorScheme.onSurfaceVariant.withOpacity(0.4),
+                        color: colorScheme.onSurfaceVariant.withValues(alpha: 0.4),
                         borderRadius: BorderRadius.circular(2),
                       ),
                     ),
@@ -393,7 +393,7 @@ class AIAssistantSheet extends StatelessWidget {
                             delay: (entry.key * 50).ms,
                             duration: 200.ms,
                           );
-                    }).toList()
+                    })
                   else
                     MarkdownBody(
                       data: suggestion.content,

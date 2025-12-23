@@ -34,7 +34,7 @@ class _NoteDetailScreenState extends State<NoteDetailScreen> {
     _contentController = TextEditingController(
       text: widget.note?.content ?? '',
     );
-    _selectedColor = widget.note?.color ?? AppTheme.noteColors[0].value;
+    _selectedColor = widget.note?.color ?? AppTheme.noteColors[0].toARGB32();
     _isPinned = widget.note?.isPinned ?? false;
     _labels = List.from(widget.note?.labels ?? []);
   }
@@ -56,21 +56,21 @@ class _NoteDetailScreenState extends State<NoteDetailScreen> {
   Color _getTextColor() {
     final backgroundColor = Color(_selectedColor);
     final isLight = _isLightColor(backgroundColor);
-    return isLight ? Colors.black87 : Colors.white.withOpacity(0.95);
+    return isLight ? Colors.black87 : Colors.white.withValues(alpha: 0.95);
   }
 
   /// Gets the appropriate secondary text color
   Color _getSecondaryTextColor() {
     final backgroundColor = Color(_selectedColor);
     final isLight = _isLightColor(backgroundColor);
-    return isLight ? Colors.black54 : Colors.white.withOpacity(0.7);
+    return isLight ? Colors.black54 : Colors.white.withValues(alpha: 0.7);
   }
 
   /// Gets the appropriate icon color
   Color _getIconColor() {
     final backgroundColor = Color(_selectedColor);
     final isLight = _isLightColor(backgroundColor);
-    return isLight ? Colors.black54 : Colors.white.withOpacity(0.8);
+    return isLight ? Colors.black54 : Colors.white.withValues(alpha: 0.8);
   }
 
   void _saveNote() {
@@ -256,7 +256,7 @@ class _NoteDetailScreenState extends State<NoteDetailScreen> {
                 children: _labels.map((label) {
                   return Chip(
                     label: Text(label, style: TextStyle(color: textColor)),
-                    backgroundColor: Colors.black.withOpacity(0.1),
+                    backgroundColor: Colors.black.withValues(alpha: 0.1),
                     deleteIcon: Icon(Icons.close, size: 18, color: iconColor),
                     onDeleted: () {
                       setState(() {
@@ -275,7 +275,7 @@ class _NoteDetailScreenState extends State<NoteDetailScreen> {
         decoration: BoxDecoration(
           color: Color(_selectedColor),
           border: Border(
-            top: BorderSide(color: Colors.black.withOpacity(0.1), width: 1),
+            top: BorderSide(color: Colors.black.withValues(alpha: 0.1), width: 1),
           ),
         ),
         child: Row(
@@ -326,14 +326,14 @@ class _NoteDetailScreenState extends State<NoteDetailScreen> {
             spacing: 12,
             runSpacing: 12,
             children: AppTheme.noteColors.map((color) {
-              final isSelected = _selectedColor == color.value;
+              final isSelected = _selectedColor == color.toARGB32();
               final isLight = _isLightColor(color);
               final checkColor = isLight ? Colors.black87 : Colors.white;
 
               return GestureDetector(
                 onTap: () {
                   setState(() {
-                    _selectedColor = color.value;
+                    _selectedColor = color.toARGB32();
                   });
                   Navigator.pop(context);
                 },
