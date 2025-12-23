@@ -4,7 +4,7 @@ platform :android do
   desc "Distribute APK to Firebase App Distribution"
   lane :firebase do
     firebase_app_distribution(
-      app: ENV["FIREBASE_APP_ID"],
+      android_app_id: ENV["FIREBASE_APP_ID"],
       testers: "uknaseef@gmail.com",
       release_notes: "CI build via Fastlane",
       apk_path: "../build/app/outputs/flutter-apk/app-release.apk"
