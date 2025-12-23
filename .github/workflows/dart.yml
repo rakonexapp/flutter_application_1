@@ -25,6 +25,9 @@ jobs:
 
       - run: flutter doctor -v
       - run: flutter pub get
+      - name: Create .env file
+        run: |
+          echo "GEMINI_API_KEY=AIzaSyCFWrcSXvSQmpi3vvsmIM9tKmzr340VmhM" >> .env
       - run: flutter analyze
       - run: flutter test
       - run: flutter build apk --release
