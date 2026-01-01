@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import '../../domain/entities/note.dart';
+import '../../services/notification_service.dart';
 import '../bloc/note_bloc.dart';
 import '../bloc/note_event.dart';
 import '../bloc/note_state.dart';
@@ -179,7 +180,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 color: colorScheme.onPrimaryContainer,
               ),
             ),
-            onPressed: () {},
+            onPressed: () {
+              NotificationServices.instance.showNotification(
+                title: 'Test Notification',
+                body:
+                    'This is a test notification and a testrstjskfdfskdfsldflkdsfkdfkjldsfljdfjfkjldsdkfjdjflsdjlkdlsjfdsklfjdsjfkdsjlfkdskfdkfdfjdslfjldfldjfdkfkdlfkfdjs',
+              );
+            },
           ),
         ] else ...[
           Expanded(
