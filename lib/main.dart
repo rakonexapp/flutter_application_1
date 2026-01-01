@@ -27,20 +27,15 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return DynamicColorBuilder(
       builder: (ColorScheme? lightDynamic, ColorScheme? darkDynamic) {
-        // Use dynamic colors if available (Android 12+), otherwise use app theme
         ColorScheme lightColorScheme;
         ColorScheme darkColorScheme;
-
         if (lightDynamic != null && darkDynamic != null) {
-          // Dynamic colors available
           lightColorScheme = lightDynamic.harmonized();
           darkColorScheme = darkDynamic.harmonized();
         } else {
-          // Fallback to app's color scheme
           lightColorScheme = AppTheme.lightColorScheme;
           darkColorScheme = AppTheme.darkColorScheme;
         }
-
         return MultiBlocProvider(
           providers: [
             BlocProvider(create: (context) => InjectionContainer.noteBloc),
@@ -53,7 +48,7 @@ class MyApp extends StatelessWidget {
             darkTheme: AppTheme.darkTheme.copyWith(
               colorScheme: darkColorScheme,
             ),
-            themeMode: ThemeMode.system, // Follow system theme
+            themeMode: ThemeMode.system,
             home: const HomeScreen(),
           ),
         );
