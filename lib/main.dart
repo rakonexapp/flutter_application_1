@@ -7,9 +7,12 @@ import 'core/config/gemini_config.dart';
 import 'injection_container.dart';
 import 'presentation/screens/home_screen.dart';
 import 'presentation/theme/app_theme.dart';
+import 'services/notification_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+
+  NotificationServices.instance.initNotification();
 
   await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
 
