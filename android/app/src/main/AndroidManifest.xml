@@ -3,7 +3,7 @@
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
 
     <application
-        android:label="flutter_application_1"
+        android:label="git flow"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

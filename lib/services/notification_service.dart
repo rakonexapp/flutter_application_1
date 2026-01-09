@@ -25,9 +25,7 @@ class NotificationServices {
       android: initializationSettingsAndroid,
       iOS: initializationSettingsIOS,
     );
-    final result = await flutterLocalNotificationsPlugin.initialize(
-      initializationSettings,
-    );
+    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
     _isInitialized = true;
   }
 
